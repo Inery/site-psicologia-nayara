@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Psicóloga Nayara Rocha | Psicoterapia em Maringá</title>
+<meta name="description" content="Psicoterapia para adolescentes e adultos em Maringá. Atendimento presencial e online com acolhimento, escuta qualificada e acompanhamento individualizado." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{colors:{moss:{50:'#f6f8f5',100:'#e7ece4',200:'#ccd8c5',300:'#aabca0',400:'#7f9377',500:'#62765b',600:'#4f6149',700:'#3f4f3a',800:'#33402f',900:'#293327'},sand:{50:'#fcfaf6',100:'#f4ecdd',200:'#e8dac1',300:'#dac4a1',400:'#c9ab7f'},ink:'#202920'}}}}
+</script>
+<style>
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:radial-gradient(1200px 600px at 90% 0%,rgba(201,171,127,.18),transparent 60%),radial-gradient(800px 500px at 0% 35%,rgba(127,147,119,.15),transparent 58%),linear-gradient(180deg,#f9f7f3 0%,#f5f4ef 100%);color:#33402f}
+section[id]{scroll-margin-top:6.8rem}
+.title-font{font-family:'Cormorant Garamond',serif;letter-spacing:.01em}
+a,button{transition:all .25s ease}
+.chip{display:inline-flex;padding:.45rem .85rem;border-radius:999px;font-size:.78rem;font-weight:700;border:1px solid rgba(63,79,58,.18);background:rgba(255,255,255,.72);transition:transform .25s ease,box-shadow .25s ease}
+.chip:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(34,46,36,.12)}
+.card{background:rgba(255,255,255,.9);border:1px solid rgba(51,64,47,.12);box-shadow:0 16px 36px rgba(32,41,32,.07);backdrop-filter:blur(6px);transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s cubic-bezier(.22,.61,.36,1),border-color .35s}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(32,41,32,.14);border-color:rgba(79,97,73,.24)}
+.hero-wrap{position:relative;background:linear-gradient(120deg,rgba(41,51,39,.48),rgba(41,51,39,.30)),url("{{ url_for('static', filename='img/hero.jpg') }}") center/cover;border-radius:0 0 2rem 2rem;overflow:hidden}
+.hero-wrap::after{content:'';position:absolute;inset:auto -20% -35% -20%;height:220px;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);filter:blur(24px);animation:heroGlow 8s ease-in-out infinite;pointer-events:none}
+.floating-whatsapp{position:fixed;right:clamp(.9rem,2vw,1.5rem);bottom:clamp(.9rem,2vw,1.5rem);z-index:70;display:inline-flex;align-items:center;gap:.62rem;padding:1rem 1.45rem;min-height:3.9rem;border-radius:999px;border:1px solid rgba(255,255,255,.26);background:linear-gradient(135deg,#5f7658,#3f4f3a);color:#fff;font-weight:800;font-size:1.02rem;letter-spacing:.01em;backdrop-filter:blur(6px);box-shadow:0 20px 42px rgba(34,46,36,.42);animation:waFloat 3.6s ease-in-out infinite}
+.floating-whatsapp::before{content:'';position:absolute;inset:-5px;border-radius:999px;border:1px solid rgba(255,255,255,.35);opacity:.55;animation:waPulse 2.8s ease-out infinite}
+.floating-whatsapp:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 24px 48px rgba(34,46,36,.48)}
+.floating-whatsapp svg{width:1.25rem;height:1.25rem;flex-shrink:0}
+.floating-whatsapp span{white-space:nowrap}
+.nav-link{font-weight:600;color:#3f4f3a;font-size:.94rem}
+.card article h3,#terapia article h3,#publicos article h3,#especialidades article h3{text-align:center}
+.reveal{opacity:0;transform:translateY(18px);filter:blur(4px);transition:opacity .65s cubic-bezier(.22,.61,.36,1),transform .65s cubic-bezier(.22,.61,.36,1),filter .65s}
+.reveal.v{opacity:1;transform:none;filter:none}
+#site-header.scrolled{background:rgba(248,247,242,.9);backdrop-filter:blur(10px);box-shadow:0 10px 25px rgba(34,46,36,.1)}
+@keyframes waFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes waPulse{0%{transform:scale(.98);opacity:.6}70%{transform:scale(1.05);opacity:0}100%{transform:scale(1.05);opacity:0}}
+@keyframes heroGlow{0%,100%{transform:translateX(-2%)}50%{transform:translateX(2%)}}
+@media (max-width:768px){
+  body{padding-bottom:5.3rem}
+  section[id]{scroll-margin-top:5.8rem}
+  #inicio .grid,#sobre,#publicos .grid,#especialidades .grid,#agendamento .grid,#como-chegar .grid{gap:1rem}
+  #sobre,#terapia,#publicos,#especialidades,#agendamento,#como-chegar,#faq{padding-bottom:2.7rem!important}
+  #sobre{padding-top:2.8rem!important}
+  .floating-whatsapp{
+    left:.75rem;
+    right:.75rem;
+    bottom:calc(.65rem + env(safe-area-inset-bottom,0px));
+    justify-content:center;
+    padding:.78rem 1rem;
+    font-size:.92rem;
+    min-height:3.35rem
+  }
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{transition:none}.floating-whatsapp,.floating-whatsapp::before,.hero-wrap::after{animation:none}}
+</style>
+</head>
+<body>
+<a href="https://wa.me/5544999462876?text=Ol%C3%A1%2C%0AVim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20psicoterapia" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="Agendar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0012.09 0C5.48 0 .1 5.38.1 11.99c0 2.12.55 4.19 1.6 6.02L0 24l6.15-1.61a11.9 11.9 0 005.94 1.52h.01c6.61 0 11.99-5.38 12-11.99a11.9 11.9 0 00-3.58-8.44zM12.1 21.88h-.01a9.88 9.88 0 01-5.03-1.37l-.36-.22-3.65.96.97-3.56-.24-.37a9.88 9.88 0 01-1.52-5.29c0-5.46 4.44-9.9 9.91-9.9 2.64 0 5.12 1.03 6.99 2.89a9.82 9.82 0 012.9 7c0 5.46-4.45 9.9-9.92 9.9zm5.43-7.41c-.3-.15-1.78-.88-2.05-.98-.27-.1-.47-.15-.67.15-.2.29-.77.98-.95 1.18-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.64-2.06-.17-.29-.02-.45.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.29-1.03 1.01-1.03 2.47s1.05 2.86 1.2 3.06c.15.2 2.06 3.14 4.99 4.4.7.3 1.25.48 1.68.61.71.22 1.36.19 1.88.11.57-.08 1.78-.73 2.03-1.43.25-.71.25-1.32.17-1.44-.07-.12-.27-.2-.57-.35z"/></svg>
+  <span>Agendar pelo WhatsApp</span>
+</a>
+
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 border-b border-transparent transition-all">
+  <div class="mx-auto max-w-7xl px-4 md:px-6">
+    <div class="mt-3 rounded-2xl border border-white/50 bg-white/75 px-4 py-3 shadow-lg">
+      <div class="flex items-center justify-between">
+        <a href="#inicio" class="title-font text-4xl leading-none text-moss-800">Nayara Rocha</a>
+        <button id="menu-btn" class="md:hidden rounded-full border border-moss-200 bg-white p-2 text-moss-700" aria-expanded="false">☰</button>
+        <nav class="hidden md:flex items-center gap-6">
+          <a class="nav-link" href="#sobre">Sobre</a>
+          <a class="nav-link" href="#terapia">Terapia</a>
+          <a class="nav-link" href="#publicos">Públicos</a>
+          <a class="nav-link" href="#especialidades">Especialidades</a>
+          <a class="nav-link" href="#agendamento">Agendamento</a>
+          <a class="nav-link" href="#como-chegar">Como chegar</a>
+          <a class="nav-link" href="#instagram">Instagram</a>
+          <a class="nav-link" href="#faq">FAQ</a>
+          <a href="https://wa.me/5544999462876?text=Ol%C3%A1%2C%0AVim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20psicoterapia" target="_blank" rel="noopener noreferrer" class="rounded-full bg-moss-700 px-5 py-2.5 text-sm font-semibold text-white">WhatsApp</a>
+        </nav>
+      </div>
+      <nav id="mobile-menu" class="hidden mt-3 grid gap-2 rounded-2xl border border-moss-100 bg-white p-3 md:hidden">
+        <a href="#sobre" class="rounded-lg px-3 py-2 font-semibold text-moss-700">Sobre</a>
+        <a href="#terapia" class="rounded-lg px-3 py-2 font-semibold text-moss-700">Terapia</a>
+        <a href="#publicos" class="rounded-lg px-3 py-2 font-semibold text-moss-700">Públicos</a>
+        <a href="#especialidades" class="rounded-lg px-3 py-2 font-semibold text-moss-700">Especialidades</a>
+        <a href="#agendamento" class="rounded-lg px-3 py-2 font-semibold text-moss-700">Agendamento</a>
+        <a href="#como-chegar" class="rounded-lg px-3 py-2 font-semibold text-moss-700">Como chegar</a>
+        <a href="#instagram" class="rounded-lg px-3 py-2 font-semibold text-moss-700">Instagram</a>
+        <a href="#faq" class="rounded-lg px-3 py-2 font-semibold text-moss-700">FAQ</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="pt-28 md:pt-32">
+  <section id="inicio" class="mx-auto max-w-7xl px-4 reveal md:px-6">
+    <div class="hero-wrap p-5 md:p-8">
+      <div class="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="card rounded-[2rem] p-6 md:p-10">
+          <p class="text-xs font-bold uppercase tracking-[.25em] text-moss-600">Psicoterapia • Acolhimento • Autoconhecimento</p>
+          <h1 class="title-font mt-5 text-5xl leading-[0.95] text-ink md:text-7xl">Um espaço seguro para cuidar da sua saúde mental com leveza e profundidade.</h1>
+          <p class="mt-6 max-w-2xl text-base leading-8 text-moss-700 md:text-lg">A terapia é um convite à transformação. Aqui, você encontra um ambiente ético e acolhedor para compreender emoções, fortalecer autoestima e construir uma rotina mais equilibrada.</p>
+          <div class="mt-6 flex flex-wrap gap-2.5">
+            <span class="chip">Presencial e online</span>
+            <span class="chip">Adolescentes e adultos</span>
+            <span class="chip">CRP 08/35616</span>
+          </div>
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+            <a href="https://wa.me/5544999462876?text=Ol%C3%A1%2C%0AVim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20psicoterapia" target="_blank" rel="noopener noreferrer" class="w-full rounded-full bg-moss-700 px-6 py-3 text-center font-semibold text-white sm:w-auto">Agendar pelo WhatsApp</a>
+            <a href="#agendamento" class="w-full rounded-full border border-moss-300 bg-white/85 px-6 py-3 text-center font-semibold text-moss-800 sm:w-auto">Agendamento online</a>
+          </div>
+        </div>
+        <div class="relative mx-auto w-full max-w-md lg:max-w-none">
+          <div class="card rounded-[2rem] p-2">
+            <img src="https://lh3.googleusercontent.com/pw/AP1GczPDqyRAdWiS-1gK4Jb_LJGKNa-qDbbFe8fayoK-lEcM3cs7XrtAA4We2gdecsjhJYNheykyNmPNA-rowqfp_SlHxQfBOgxkyAHlcBWvelQZTvDTEXjjAmP9CEI0ed8ppJjvIfJXcmKrRF3Yxd0lcNtm=w513-h641-s-no-gm?authuser=0" alt="Retrato da Psicóloga Nayara Rocha" class="aspect-[1/1] w-full rounded-[1.6rem] object-cover object-top md:aspect-[4/5]" decoding="async" fetchpriority="high" />
+          </div>
+          <div class="absolute -bottom-2 left-3 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold text-moss-700 shadow">Maringá • Paraná</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="mx-auto grid max-w-7xl items-center gap-8 px-4 py-16 reveal md:grid-cols-[.92fr_1.08fr] md:px-6 md:py-24">
+    <div class="card rounded-[2rem] p-2">
+      <img src="https://lh3.googleusercontent.com/pw/AP1GczPzGWQ-s01KZem9jFoYTAeOaR6n9v6UBUDxZLmGysnDq1GqVNUITOtIifcBqrylYSF4dfYccD7nIjB2PhDUF82xt6D8s83D0Wobd_NdoFFY902zjqAG2dBAAvEYOHXacRHtyLeTfNZ43KFWemlUG9AO=w507-h641-s-no-gm?authuser=0" alt="Foto da Psicóloga Nayara Rocha" class="aspect-[1/1] w-full rounded-[1.6rem] object-cover object-top md:aspect-[4/5]" loading="lazy" decoding="async" />
+    </div>
+    <div class="card rounded-[2rem] p-6 md:p-9">
+      <p class="text-xs font-bold uppercase tracking-[.22em] text-moss-600">Sobre mim</p>
+      <h2 class="title-font mt-4 text-4xl leading-tight text-ink md:text-5xl">Cuidado psicológico com escuta sensível e olhar individualizado.</h2>
+      <p class="mt-6 leading-8 text-moss-700">Sou Nayara Rocha, psicóloga dedicada ao acolhimento emocional e ao desenvolvimento pessoal de cada paciente. Meu trabalho é oferecer um espaço seguro, respeitoso e humano para que você possa falar sobre dores, desafios e desejos com liberdade.</p>
+      <p class="mt-4 leading-8 text-moss-700">Minha prática clínica une escuta ativa, responsabilidade ética e compromisso com o processo terapêutico, respeitando a singularidade de cada história e o tempo de cada pessoa.</p>
+      <div class="mt-7 grid gap-3 sm:grid-cols-3">
+        <div class="rounded-2xl border border-moss-100 bg-white p-4 text-sm font-semibold text-moss-700">Escuta qualificada</div>
+        <div class="rounded-2xl border border-moss-100 bg-white p-4 text-sm font-semibold text-moss-700">Atendimento humanizado</div>
+        <div class="rounded-2xl border border-moss-100 bg-white p-4 text-sm font-semibold text-moss-700">Plano terapêutico singular</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="terapia" class="mx-auto max-w-7xl px-4 pb-16 reveal md:px-6 md:pb-24">
+    <div class="card rounded-[2rem] p-6 md:p-10">
+      <div class="mx-auto max-w-4xl text-center">
+        <p class="text-xs font-bold uppercase tracking-[.22em] text-moss-600">A importância da terapia</p>
+        <h2 class="title-font mt-4 text-4xl text-ink md:text-5xl">Investir em si é uma forma profunda de autocuidado.</h2>
+        <p class="mt-5 text-base leading-8 text-moss-700 md:text-lg">A terapia ajuda a compreender emoções, ressignificar experiências e desenvolver formas mais saudáveis de lidar com relações, dores e desafios cotidianos.</p>
+      </div>
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        <article class="rounded-2xl border border-moss-100 bg-white p-5"><h3 class="font-semibold text-moss-800">Acolher</h3><p class="mt-2 text-sm leading-7 text-moss-700">Um espaço protegido para organizar pensamentos e emoções.</p></article>
+        <article class="rounded-2xl border border-moss-100 bg-white p-5"><h3 class="font-semibold text-moss-800">Compreender</h3><p class="mt-2 text-sm leading-7 text-moss-700">Identificação de padrões que impactam vínculos e escolhas.</p></article>
+        <article class="rounded-2xl border border-moss-100 bg-white p-5"><h3 class="font-semibold text-moss-800">Transformar</h3><p class="mt-2 text-sm leading-7 text-moss-700">Desenvolvimento de autonomia e equilíbrio emocional.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="publicos" class="mx-auto max-w-7xl px-4 pb-16 reveal md:px-6 md:pb-24">
+    <div class="mb-9 text-center">
+      <p class="text-xs font-bold uppercase tracking-[.22em] text-moss-600">Públicos atendidos</p>
+      <h2 class="title-font mt-4 text-4xl text-ink md:text-5xl">Psicoterapia para adolescentes e adultos</h2>
+    </div>
+    <div class="grid gap-5 md:grid-cols-2">
+      <article class="card rounded-[1.8rem] p-6"><h3 class="title-font text-3xl text-ink">Adolescentes</h3><p class="mt-3 leading-8 text-moss-700">Acompanhamento para ansiedade, autoestima, identidade, conflitos familiares e relacionamentos.</p></article>
+      <article class="card rounded-[1.8rem] p-6"><h3 class="title-font text-3xl text-ink">Adultos</h3><p class="mt-3 leading-8 text-moss-700">Suporte para demandas emocionais, sobrecarga mental, vínculos e padrões repetitivos.</p></article>
+    </div>
+  </section>
+
+  <section id="especialidades" class="mx-auto max-w-7xl px-4 pb-16 reveal md:px-6 md:pb-24">
+    <div class="mb-9 text-center">
+      <p class="text-xs font-bold uppercase tracking-[.22em] text-moss-600">Especialidades</p>
+      <h2 class="title-font mt-4 text-4xl text-ink md:text-5xl">Demandas trabalhadas na terapia</h2>
+    </div>
+    <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <article class="card rounded-[1.7rem] p-6"><h3 class="title-font text-3xl text-ink">Ansiedade</h3><p class="mt-2 leading-7 text-moss-700">Acolhimento para tensão, medo e sintomas ansiosos.</p></article>
+      <article class="card rounded-[1.7rem] p-6"><h3 class="title-font text-3xl text-ink">Relacionamentos</h3><p class="mt-2 leading-7 text-moss-700">Vínculos afetivos, comunicação e limites saudáveis.</p></article>
+      <article class="card rounded-[1.7rem] p-6"><h3 class="title-font text-3xl text-ink">Dependência emocional</h3><p class="mt-2 leading-7 text-moss-700">Fortalecimento de autoestima e autonomia emocional.</p></article>
+      <article class="card rounded-[1.7rem] p-6"><h3 class="title-font text-3xl text-ink">Autoconhecimento</h3><p class="mt-2 leading-7 text-moss-700">Compreensão de padrões e escolhas mais conscientes.</p></article>
+    </div>
+  </section>
+  <section id="agendamento" class="mx-auto max-w-7xl px-4 pb-16 reveal md:px-6 md:pb-24">
+    <div class="overflow-hidden rounded-[2rem] bg-gradient-to-br from-moss-800 via-moss-700 to-moss-900 p-6 text-white shadow-2xl md:p-10">
+      <div class="mx-auto mb-10 max-w-4xl text-center">
+        <p class="text-xs font-bold uppercase tracking-[.22em] text-sand-100">Agendamento</p>
+        <h2 class="title-font mt-4 text-4xl md:text-5xl">Escolha seu horário de forma prática</h2>
+        <p class="mt-4 text-base leading-8 text-moss-50 md:text-lg">Você pode agendar pelo sistema online ou falar no WhatsApp para tirar dúvidas.</p>
+      </div>
+      <div class="grid gap-7">
+        <div class="overflow-hidden rounded-[1.8rem] bg-white shadow-2xl hidden md:block">
+          <iframe src="https://agendar-psicoplanner.web.app/psinayararocha" class="h-[760px] w-full border-0" loading="lazy" title="Agendamento online"></iframe>
+        </div>
+        <div class="rounded-[1.8rem] border border-white/30 bg-white p-5 text-moss-800 shadow-2xl md:hidden">
+          <p class="text-xs font-bold uppercase tracking-[.2em] text-moss-600">Agendamento no celular</p>
+          <h3 class="title-font mt-3 text-3xl text-moss-900">Abra a agenda completa em nova guia</h3>
+          <p class="mt-3 leading-7 text-moss-700">
+            Para melhor experiência no mobile, abra a agenda no navegador.
+            Assim você visualiza todos os horários sem cortes.
+          </p>
+          <div class="mt-5 space-y-3">
+            <a href="https://agendar-psicoplanner.web.app/psinayararocha" target="_blank" rel="noopener noreferrer" class="block rounded-full bg-moss-700 px-5 py-3 text-center font-semibold text-white">Abrir agenda completa</a>
+            <a href="https://wa.me/5544999462876?text=Ol%C3%A1%2C%0AVim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20psicoterapia" target="_blank" rel="noopener noreferrer" class="block rounded-full border border-moss-300 px-5 py-3 text-center font-semibold text-moss-800">Falar pelo WhatsApp</a>
+          </div>
+        </div>
+        <aside class="w-full max-w-xl rounded-[1.8rem] border border-white/20 bg-white/12 p-5 backdrop-blur-sm md:p-7">
+          <h3 class="title-font text-3xl text-white">Outras formas de contato</h3>
+          <div class="mt-6 space-y-5 text-moss-50">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[.18em] text-sand-100">WhatsApp</p>
+              <a href="https://wa.me/5544999462876?text=Ol%C3%A1%2C%0AVim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20psicoterapia" target="_blank" rel="noopener noreferrer" class="mt-1 inline-block text-lg font-semibold hover:text-sand-100">+55 (44) 99946-2876</a>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[.18em] text-sand-100">Instagram</p>
+              <a href="https://www.instagram.com/psi.nayararocha/" target="_blank" rel="noopener noreferrer" class="mt-1 inline-block text-lg font-semibold hover:text-sand-100">@psi.nayararocha</a>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[.18em] text-sand-100">Endereço</p>
+              <p class="mt-1 leading-7">R. Santos Dumont, 2314 - Zona 1,<br>Maringá - PR, 87050-100</p>
+            </div>
+          </div>
+          <div class="mt-8 space-y-3">
+            <a href="https://agendar-psicoplanner.web.app/psinayararocha" target="_blank" rel="noopener noreferrer" class="block rounded-full bg-sand-100 px-5 py-3 text-center font-semibold text-moss-900">Abrir agenda em nova guia</a>
+            <a href="https://wa.me/5544999462876?text=Ol%C3%A1%2C%0AVim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20psicoterapia" target="_blank" rel="noopener noreferrer" class="block rounded-full border border-white/40 px-5 py-3 text-center font-semibold text-white">Falar pelo WhatsApp</a>
+          </div>
+          <p class="mt-6 text-sm leading-6 text-moss-50/90">Se a agenda não abrir no site, use "Abrir agenda em nova guia".</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-chegar" class="mx-auto max-w-7xl px-4 pb-16 reveal md:px-6 md:pb-24">
+    <div class="card rounded-[2rem] p-6 md:p-10">
+      <div class="mb-8 text-center">
+        <p class="text-xs font-bold uppercase tracking-[.22em] text-moss-600">Como chegar</p>
+        <h2 class="title-font mt-4 text-4xl text-ink md:text-5xl">Localização da clínica</h2>
+        <p class="mx-auto mt-4 max-w-3xl text-base leading-8 text-moss-700 md:text-lg">Veja a localização no mapa e abra seu cadastro no Google Empresa.</p>
+      </div>
+      <div class="grid gap-7 lg:grid-cols-[1.18fr_.82fr]">
+        <div class="overflow-hidden rounded-[1.7rem] border border-moss-100 shadow-lg">
+          <iframe src="https://www.google.com/maps?q=R.+Santos+Dumont,+2314+-+Zona+1,+Maring%C3%A1+-+PR,+87050-100&output=embed" class="h-[430px] w-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa da clínica"></iframe>
+        </div>
+        <aside class="rounded-[1.7rem] border border-moss-100 bg-sand-50 p-6">
+          <h3 class="title-font text-3xl text-ink">Endereço de atendimento</h3>
+          <p class="mt-4 leading-8 text-moss-700">R. Santos Dumont, 2314 - Zona 1,<br>Maringá - PR, 87050-100</p>
+          <p class="mt-4 leading-7 text-moss-700">Região central, com acesso prático para atendimento presencial.</p>
+          <div class="mt-7 space-y-3">
+            <a href="https://share.google/mp1lKWOaNBneop92H" target="_blank" rel="noopener noreferrer" class="block rounded-full bg-moss-700 px-5 py-3 text-center font-semibold text-white">Ver no Google Empresa</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=R.+Santos+Dumont,+2314+-+Zona+1,+Maring%C3%A1+-+PR,+87050-100" target="_blank" rel="noopener noreferrer" class="block rounded-full border border-moss-300 bg-white px-5 py-3 text-center font-semibold text-moss-800">Traçar rota no Google Maps</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="instagram" class="mx-auto max-w-7xl px-4 pb-16 reveal md:px-6 md:pb-24">
+    <div class="card rounded-[2rem] p-6 md:p-10">
+      <div class="mb-8 text-center">
+        <p class="text-xs font-bold uppercase tracking-[.22em] text-moss-600">Instagram</p>
+        <h2 class="title-font mt-4 text-4xl text-ink md:text-5xl">Publicações recentes</h2>
+        <p class="mx-auto mt-4 max-w-3xl text-base leading-8 text-moss-700 md:text-lg">
+          Conteúdos sobre saúde mental, autocuidado e psicoterapia atualizados direto do perfil.
+        </p>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-[320px_1fr]">
+        <aside class="rounded-[1.6rem] border border-moss-100 bg-white p-6">
+          <p class="text-sm font-semibold text-moss-700">Perfil oficial</p>
+          <p class="mt-2 text-2xl font-bold text-moss-900">@{{ instagram.username }}</p>
+          <p class="mt-1 text-sm text-moss-600">{{ instagram.full_name }}</p>
+          {% if instagram.biography %}
+          <p class="mt-4 whitespace-pre-line leading-7 text-moss-700">{{ instagram.biography }}</p>
+          {% else %}
+          <p class="mt-4 leading-7 text-moss-700">Dicas práticas, reflexões e orientações para fortalecer seu bem-estar emocional.</p>
+          {% endif %}
+          {% if instagram.followers > 0 %}
+          <p class="mt-4 text-sm font-medium text-moss-600">{{ "{:,}".format(instagram.followers).replace(",", ".") }} seguidores</p>
+          {% endif %}
+          <a
+            href="{{ instagram.profile_url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-6 block rounded-full bg-moss-700 px-5 py-3 text-center font-semibold text-white"
+          >
+            Seguir no Instagram
+          </a>
+        </aside>
+
+        <div>
+          {% if instagram.posts %}
+          <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {% for post in instagram.posts %}
+            <a href="{{ post.url }}" target="_blank" rel="noopener noreferrer" class="group flex h-full flex-col overflow-hidden rounded-[1.4rem] border border-moss-100 bg-white shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div class="relative aspect-square overflow-hidden">
+                <img src="{{ url_for('instagram_thumb', shortcode=post.shortcode) }}" alt="Publicação do Instagram de {{ instagram.username }}" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+                {% if post.is_video %}
+                <span class="absolute right-3 top-3 rounded-full bg-black/65 px-2.5 py-1 text-xs font-semibold text-white">Vídeo</span>
+                {% endif %}
+              </div>
+              <div class="p-4">
+                <p class="text-sm leading-6 text-moss-700">
+                  {{ post.caption[:140] }}{% if post.caption|length > 140 %}...{% endif %}
+                </p>
+                <span class="mt-3 inline-block text-sm font-semibold text-moss-800">Ver publicação</span>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="flex min-h-[240px] items-center justify-center rounded-[1.6rem] border border-moss-100 bg-white p-8 text-center">
+            <div>
+              <p class="leading-7 text-moss-700">As publicações não puderam ser carregadas agora.</p>
+              <a href="{{ instagram.profile_url }}" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block rounded-full bg-moss-700 px-5 py-2.5 font-semibold text-white">Ver perfil no Instagram</a>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="mx-auto max-w-7xl px-4 pb-16 reveal md:px-6 md:pb-24">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="text-xs font-bold uppercase tracking-[.22em] text-moss-600">FAQ</p>
+      <h2 class="title-font mt-4 text-4xl text-ink md:text-5xl">Dúvidas comuns sobre o atendimento</h2>
+    </div>
+    <div class="mx-auto mt-10 grid max-w-4xl gap-4">
+      <details class="rounded-2xl border border-moss-100 bg-white p-5 shadow"><summary class="cursor-pointer text-lg font-semibold text-moss-900">Quanto tempo dura uma sessão?</summary><p class="mt-3 leading-8 text-moss-700">Em geral, a sessão tem duração média de 50 minutos.</p></details>
+      <details class="rounded-2xl border border-moss-100 bg-white p-5 shadow"><summary class="cursor-pointer text-lg font-semibold text-moss-900">O atendimento é sigiloso?</summary><p class="mt-3 leading-8 text-moss-700">Sim. O sigilo é princípio ético fundamental da Psicologia, somente deve ser quebrado em situações onde há um risco contra sua vida ou de terceiros.</p></details>
+      <details class="rounded-2xl border border-moss-100 bg-white p-5 shadow"><summary class="cursor-pointer text-lg font-semibold text-moss-900">Posso fazer atendimento online?</summary><p class="mt-3 leading-8 text-moss-700">Sim. O atendimento online é uma alternativa prática, segura e eficaz para muitas pessoas. Portanto, caso opte por esta mobilidade assim seguiremos.</p></details>
+      <details class="rounded-2xl border border-moss-100 bg-white p-5 shadow"><summary class="cursor-pointer text-lg font-semibold text-moss-900">Como funciona o agendamento?</summary><p class="mt-3 leading-8 text-moss-700">O agendamento por ser feito de forma online, onde você pode preencher e agendar direto na agenda acima. Ao fazer isso, realizarei um contato para confirmação. Porém, caso queira tirar algumas dúvidas antes do agendamento, pode ser feito contato via whatsapp. Tenho preferência para realizar uma chamada de 15 minutos para tirar dúvidas e entender a necessidade atual.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-moss-100 bg-white/85 pb-24 pt-14 md:pb-12">
+  <div class="mx-auto grid max-w-7xl gap-8 px-4 md:grid-cols-3 md:px-6">
+    <div>
+      <h3 class="title-font text-3xl text-ink">Nayara Rocha</h3>
+      <p class="mt-3 leading-8 text-moss-700">Psicoterapia com acolhimento, sensibilidade e compromisso com seu processo.</p>
+    </div>
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-[.2em] text-moss-500">Contatos</h4>
+      <ul class="mt-3 space-y-2 text-moss-700">
+        <li><a href="https://wa.me/5544999462876?text=Ol%C3%A1%2C%0AVim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20psicoterapia" target="_blank" rel="noopener noreferrer">+55 (44) 99946-2876</a></li>
+        <li><a href="https://www.instagram.com/psi.nayararocha/" target="_blank" rel="noopener noreferrer">@psi.nayararocha</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-[.2em] text-moss-500">Clínica</h4>
+      <p class="mt-3 leading-8 text-moss-700">R. Santos Dumont, 2314 - Zona 1,<br>Maringá - PR, 87050-100</p>
+      <p class="mt-3 font-semibold text-moss-700">CRP: 08/35616</p>
+    </div>
+  </div>
+  <div class="mx-auto mt-9 max-w-7xl border-t border-moss-100 px-4 pt-5 text-sm text-moss-500 md:px-6">© 2026 Nayara Rocha. Todos os direitos reservados.</div>
+</footer>
+
+<script>
+const menuBtn=document.getElementById('menu-btn');
+const mobileMenu=document.getElementById('mobile-menu');
+const header=document.getElementById('site-header');
+if(menuBtn&&mobileMenu){
+  menuBtn.addEventListener('click',()=>{mobileMenu.classList.toggle('hidden');menuBtn.setAttribute('aria-expanded',String(!mobileMenu.classList.contains('hidden')))});
+  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.add('hidden')));
+}
+const setHeader=()=>header&&header.classList.toggle('scrolled',window.scrollY>10);
+setHeader();window.addEventListener('scroll',setHeader,{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=`${Math.min(i*80,320)}ms`;io.observe(el)});
+</script>
+</body>
+</html>
