@@ -1,7 +1,7 @@
 ﻿import json
 import re
 import time
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 from flask import Flask, Response, abort, render_template
@@ -27,7 +27,7 @@ INSTAGRAM_HEADERS = {
 # Cache em memória
 # Observação: na Vercel esse cache pode não persistir entre execuções,
 # porque o ambiente é serverless. Ainda assim, mantemos como fallback.
-INSTAGRAM_CACHE_TTL = 1800  # 30 minutos
+INSTAGRAM_CACHE_TTL = 300  # 5 minutos
 INSTAGRAM_CACHE = {"timestamp": 0.0, "data": None}
 
 
@@ -67,13 +67,29 @@ def _extract_caption(node):
     return (text or "Ver publicação no Instagram.").strip()
 
 
+def _find_post_image(instagram_data, shortcode):
+    return next(
+        (
+            post.get("image")
+            for post in instagram_data.get("posts", [])
+            if post.get("shortcode") == shortcode
+        ),
+        None,
+    )
+
+
 def _fetch_instagram_data(limit=6):
     req = Request(INSTAGRAM_API_URL, headers=INSTAGRAM_HEADERS)
     with urlopen(req, timeout=10) as response:
         raw = response.read().decode("utf-8")
 
     payload = json.loads(raw)
-    user = payload.get("data", {}).get("user", {})
+    if payload.get("status") != "ok":
+        raise ValueError("Instagram API returned non-ok status")
+
+    user = payload.get("data", {}).get("user")
+    if not isinstance(user, dict) or not user:
+        raise ValueError("Instagram API payload is missing user data")
 
     posts = []
     timeline = user.get("edge_owner_to_timeline_media", {})
@@ -106,17 +122,25 @@ def _fetch_instagram_data(limit=6):
     }
 
 
-def get_instagram_data(limit=6):
+def get_instagram_data(limit=6, force_refresh=False):
     now = time.time()
     cached = INSTAGRAM_CACHE.get("data")
 
-    if cached and now - INSTAGRAM_CACHE["timestamp"] < INSTAGRAM_CACHE_TTL:
+    if (
+        not force_refresh
+        and cached
+        and now - INSTAGRAM_CACHE["timestamp"] < INSTAGRAM_CACHE_TTL
+    ):
         return cached
 
     try:
         fresh_data = _fetch_instagram_data(limit=limit)
-        INSTAGRAM_CACHE["timestamp"] = now
-        INSTAGRAM_CACHE["data"] = fresh_data
+        # Evita substituir cache bom por resposta vazia em bloqueios temporários.
+        if fresh_data.get("posts"):
+            INSTAGRAM_CACHE["timestamp"] = now
+            INSTAGRAM_CACHE["data"] = fresh_data
+        elif cached:
+            return cached
         return fresh_data
     except (URLError, TimeoutError, ValueError, json.JSONDecodeError):
         if cached:
@@ -136,14 +160,12 @@ def instagram_thumb(shortcode):
         abort(404)
 
     instagram = get_instagram_data(limit=18)
-    image_url = next(
-        (
-            post.get("image")
-            for post in instagram.get("posts", [])
-            if post.get("shortcode") == shortcode
-        ),
-        None,
-    )
+    image_url = _find_post_image(instagram, shortcode)
+
+    # Revalida para evitar URL de imagem expirada em cache antigo.
+    if not image_url:
+        instagram = get_instagram_data(limit=18, force_refresh=True)
+        image_url = _find_post_image(instagram, shortcode)
 
     if not image_url:
         abort(404)
@@ -154,16 +176,26 @@ def instagram_thumb(shortcode):
         "Accept": "image/avif,image/webp,image/apng,image/*,*/*;q=0.8",
     }
 
-    try:
-        request = Request(image_url, headers=request_headers)
-        with urlopen(request, timeout=12) as response:
-            image_bytes = response.read()
-            content_type = response.headers.get("Content-Type", "image/jpeg")
-    except URLError:
-        abort(502)
+    for attempt in range(2):
+        try:
+            request = Request(image_url, headers=request_headers)
+            with urlopen(request, timeout=12) as response:
+                image_bytes = response.read()
+                content_type = response.headers.get("Content-Type", "image/jpeg")
+            break
+        except HTTPError as exc:
+            if exc.code == 403 and attempt == 0:
+                instagram = get_instagram_data(limit=18, force_refresh=True)
+                refreshed_image_url = _find_post_image(instagram, shortcode)
+                if refreshed_image_url and refreshed_image_url != image_url:
+                    image_url = refreshed_image_url
+                    continue
+            abort(502)
+        except URLError:
+            abort(502)
 
     proxy_response = Response(image_bytes, mimetype=content_type)
-    proxy_response.headers["Cache-Control"] = "public, max-age=1800"
+    proxy_response.headers["Cache-Control"] = "public, max-age=300"
     return proxy_response
 
 
